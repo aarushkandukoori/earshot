@@ -1,0 +1,36 @@
+{"meta": {"VECLIB_MAXIMUM_THREADS": "1"}}
+{"shape": "task example 8x128 * 128x256", "M": 8, "N": 256, "K": 128, "sgemm_xWT_us": 2.169, "sgemm_xWT_gflops": 241.71, "sgemm_xW_us": 0.737, "sgemm_xW_gflops": 711.12}
+{"shape": "task example 1x256 * 256x768", "M": 1, "N": 768, "K": 256, "sgemm_xWT_us": 1.828, "sgemm_xWT_gflops": 215.08, "sgemm_xW_us": 1.006, "sgemm_xW_gflops": 390.92, "sgemv_us": 1.826, "sgemv_gflops": 215.39}
+{"shape": "tasnet32 4ms: B->H 1x1 conv", "M": 4, "N": 256, "K": 128, "sgemm_xWT_us": 2.069, "sgemm_xWT_gflops": 126.67, "sgemm_xW_us": 0.718, "sgemm_xW_gflops": 365.07}
+{"shape": "tasnet32 4ms: H->2B res+skip", "M": 4, "N": 256, "K": 256, "sgemm_xWT_us": 4.100, "sgemm_xWT_gflops": 127.89, "sgemm_xW_us": 1.342, "sgemm_xW_gflops": 390.75}
+{"shape": "tasnet32 4ms: encoder L=32 -> N", "M": 4, "N": 256, "K": 32, "sgemm_xWT_us": 0.751, "sgemm_xWT_gflops": 87.30, "sgemm_xW_us": 0.293, "sgemm_xW_gflops": 223.50}
+{"shape": "tasnet32 4ms: decoder N -> L=32", "M": 4, "N": 32, "K": 256, "sgemm_xWT_us": 1.176, "sgemm_xWT_gflops": 55.72, "sgemm_xW_us": 0.545, "sgemm_xW_gflops": 120.28}
+{"shape": "tasnet32 8ms: B->H 1x1 conv", "M": 8, "N": 256, "K": 128, "sgemm_xWT_us": 2.090, "sgemm_xWT_gflops": 250.90, "sgemm_xW_us": 0.709, "sgemm_xW_gflops": 739.11}
+{"shape": "tasnet32 8ms: H->2B res+skip", "M": 8, "N": 256, "K": 256, "sgemm_xWT_us": 4.087, "sgemm_xWT_gflops": 256.59, "sgemm_xW_us": 1.351, "sgemm_xW_gflops": 776.12}
+{"shape": "tasnet64 4ms: B->H 1x1 conv", "M": 2, "N": 256, "K": 128, "sgemm_xWT_us": 2.049, "sgemm_xWT_gflops": 63.96, "sgemm_xW_us": 0.684, "sgemm_xW_gflops": 191.67}
+{"shape": "tasnet64 4ms: H->2B res+skip", "M": 2, "N": 256, "K": 256, "sgemm_xWT_us": 4.235, "sgemm_xWT_gflops": 61.91, "sgemm_xW_us": 1.333, "sgemm_xW_gflops": 196.66}
+{"shape": "tasnet64 8ms = tasnet32 4ms rows", "M": 4, "N": 256, "K": 256, "sgemm_xWT_us": 4.625, "sgemm_xWT_gflops": 113.36, "sgemm_xW_us": 1.340, "sgemm_xW_gflops": 391.23}
+{"shape": "stft rnn: input 514 -> 384", "M": 1, "N": 384, "K": 514, "sgemm_xWT_us": 2.712, "sgemm_xWT_gflops": 145.58, "sgemm_xW_us": 1.143, "sgemm_xW_gflops": 345.30, "sgemv_us": 2.763, "sgemv_gflops": 142.86}
+{"shape": "stft rnn: GRU gates 384 -> 1152", "M": 1, "N": 1152, "K": 384, "sgemm_xWT_us": 3.190, "sgemm_xWT_gflops": 277.36, "sgemm_xW_us": 2.248, "sgemm_xW_gflops": 393.54, "sgemv_us": 3.188, "sgemv_gflops": 277.49}
+{"shape": "stft rnn: LSTM gates 384 -> 1536", "M": 1, "N": 1536, "K": 384, "sgemm_xWT_us": 4.347, "sgemm_xWT_gflops": 271.40, "sgemm_xW_us": 2.829, "sgemm_xW_gflops": 416.94, "sgemv_us": 4.342, "sgemv_gflops": 271.66}
+{"shape": "stft rnn: out 384 -> 514", "M": 1, "N": 514, "K": 384, "sgemm_xWT_us": 1.454, "sgemm_xWT_gflops": 271.40, "sgemm_xW_us": 1.367, "sgemm_xW_gflops": 288.83, "sgemv_us": 1.457, "sgemv_gflops": 270.97}
+{"shape": "stft rnn 8ms: input proj, 2 frames", "M": 2, "N": 1152, "K": 384, "sgemm_xWT_us": 25.860, "sgemm_xWT_gflops": 68.42, "sgemm_xW_us": 7.619, "sgemm_xW_gflops": 232.24}
+{"shape": "stft rnn 8ms: LSTM input proj, 2 frames", "M": 2, "N": 1536, "K": 384, "sgemm_xWT_us": 34.376, "sgemm_xWT_gflops": 68.63, "sgemm_xW_us": 11.554, "sgemm_xW_gflops": 204.20}
+{"shape": "bsrnn: time GRU gates, 16 bands", "M": 16, "N": 192, "K": 64, "sgemm_xWT_us": 0.905, "sgemm_xWT_gflops": 434.40, "sgemm_xW_us": 0.350, "sgemm_xW_gflops": 1122.55}
+{"shape": "bsrnn: time LSTM gates, 16 bands", "M": 16, "N": 256, "K": 64, "sgemm_xWT_us": 1.968, "sgemm_xWT_gflops": 266.35, "sgemm_xW_us": 0.476, "sgemm_xW_gflops": 1101.28}
+{"shape": "bsrnn: band GRU step 32 -> 96", "M": 1, "N": 96, "K": 32, "sgemm_xWT_us": 0.111, "sgemm_xWT_gflops": 55.31, "sgemm_xW_us": 0.091, "sgemm_xW_gflops": 67.48, "sgemv_us": 0.108, "sgemv_gflops": 57.12}
+{"shape": "bsrnn: fc 16 bands 64 -> 64", "M": 16, "N": 64, "K": 64, "sgemm_xWT_us": 0.472, "sgemm_xWT_gflops": 277.87, "sgemm_xW_us": 0.277, "sgemm_xW_gflops": 472.93}
+{"shape": "cliff probe M=2 N=1152 K=384", "M": 2, "N": 1152, "K": 384, "sgemm_xWT_us": 26.046, "sgemm_xWT_gflops": 67.94, "sgemm_xW_us": 7.677, "sgemm_xW_gflops": 230.49}
+{"shape": "cliff probe M=3 N=1152 K=384", "M": 3, "N": 1152, "K": 384, "sgemm_xWT_us": 26.267, "sgemm_xWT_gflops": 101.05, "sgemm_xW_us": 7.781, "sgemm_xW_gflops": 341.11}
+{"shape": "cliff probe M=4 N=1152 K=384", "M": 4, "N": 1152, "K": 384, "sgemm_xWT_us": 26.957, "sgemm_xWT_gflops": 131.28, "sgemm_xW_us": 8.725, "sgemm_xW_gflops": 405.60}
+{"shape": "cliff probe M=8 N=1152 K=384", "M": 8, "N": 1152, "K": 384, "sgemm_xWT_us": 30.492, "sgemm_xWT_gflops": 232.12, "sgemm_xW_us": 9.460, "sgemm_xW_gflops": 748.18}
+{"shape": "cliff probe M=16 N=1152 K=384", "M": 16, "N": 1152, "K": 384, "sgemm_xWT_us": 30.898, "sgemm_xWT_gflops": 458.15, "sgemm_xW_us": 9.280, "sgemm_xW_gflops": 1525.42}
+{"shape": "cliff probe M=2 N=512 K=384", "M": 2, "N": 512, "K": 384, "sgemm_xWT_us": 11.889, "sgemm_xWT_gflops": 66.15, "sgemm_xW_us": 4.722, "sgemm_xW_gflops": 166.55}
+{"shape": "cliff probe M=2 N=768 K=384", "M": 2, "N": 768, "K": 384, "sgemm_xWT_us": 17.469, "sgemm_xWT_gflops": 67.53, "sgemm_xW_us": 5.389, "sgemm_xW_gflops": 218.90}
+{"shape": "cliff probe M=2 N=1024 K=384", "M": 2, "N": 1024, "K": 384, "sgemm_xWT_us": 23.136, "sgemm_xWT_gflops": 67.98, "sgemm_xW_us": 8.824, "sgemm_xW_gflops": 178.24}
+{"shape": "cliff probe M=2 N=384 K=514", "M": 2, "N": 384, "K": 514, "sgemm_xWT_us": 14.769, "sgemm_xWT_gflops": 53.46, "sgemm_xW_us": 3.917, "sgemm_xW_gflops": 201.54}
+{"shape": "cliff probe M=2 N=514 K=384", "M": 2, "N": 514, "K": 384, "sgemm_xWT_us": 12.576, "sgemm_xWT_gflops": 62.78, "sgemm_xW_us": 4.136, "sgemm_xW_gflops": 190.90}
+{"shape": "reference 64x256x256", "M": 64, "N": 256, "K": 256, "sgemm_xWT_us": 8.586, "sgemm_xWT_gflops": 977.01, "sgemm_xW_us": 4.853, "sgemm_xW_gflops": 1728.67}
+{"shape": "reference 256^3", "M": 256, "N": 256, "K": 256, "sgemm_xWT_us": 25.501, "sgemm_xWT_gflops": 1315.82, "sgemm_xW_us": 18.876, "sgemm_xW_gflops": 1777.59}
+{"shape": "reference 512^3", "M": 512, "N": 512, "K": 512, "sgemm_xWT_us": 170.066, "sgemm_xWT_gflops": 1578.42, "sgemm_xW_us": 151.671, "sgemm_xW_gflops": 1769.86}
+{"shape": "reference 1024^3", "M": 1024, "N": 1024, "K": 1024, "sgemm_xWT_us": 1402.913, "sgemm_xWT_gflops": 1530.73, "sgemm_xW_us": 1293.339, "sgemm_xW_gflops": 1660.42}

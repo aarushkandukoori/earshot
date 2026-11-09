@@ -1,0 +1,5 @@
+{"predict_overhead_us_trivial_model_cpu": 23.9}
+{"model": "tasnet64", "ops_by_device_all": {"CPU": 1979}, "ops_on_neural_engine_by_type": {}, "ops_by_device_cpu_and_ne": {"CPU": 1979}}
+{"model": "tasnet32", "ops_by_device_all": {"CPU": 1981}, "ops_on_neural_engine_by_type": {}, "ops_by_device_cpu_and_ne": {"CPU": 1981}}
+{"model": "stftlstm", "ops_by_device_all": {"CPU": 74}, "ops_on_neural_engine_by_type": {}, "ops_by_device_cpu_and_ne": {"CPU": 74}}
+{"model": "stftgru", "ops_by_device_all": {"CPU": 76}, "ops_on_neural_engine_by_type": {}, "ops_by_device_cpu_and_ne": {"CPU": 76}}

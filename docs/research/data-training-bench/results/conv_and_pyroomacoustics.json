@@ -1,0 +1,18 @@
+{
+ "date": "2026-11-06",
+ "machine": "MacBook Pro M4 (4P+6E), macOS 26.5, project venv (torch 2.7.1, scipy 1.18.1, pyroomacoustics 0.10.1)",
+ "rir_convolution_ms_per_4s_source_1core": {
+  "fftconvolve": {"rir_0.3s": 0.45, "rir_0.8s": 0.61, "rir_1.5s": 1.00},
+  "oaconvolve": {"rir_0.3s": 1.65, "rir_0.8s": 0.68, "rir_1.5s": 1.14}
+ },
+ "mps_batched_fft_conv_8x5_sources_rir0.8s_ms_per_batch": 6.6,
+ "pyroomacoustics_5_rirs_per_room": [
+  {"target_rt60": 0.4, "dims": [6, 5, 3], "ism_max_order_used": 40, "sabine_max_order": 53, "seconds": 0.19, "measured_rt60": 0.47},
+  {"target_rt60": 0.4, "dims": [6, 5, 3], "hybrid_raytracing": true, "seconds": 0.28, "measured_rt60": 0.45},
+  {"target_rt60": 0.8, "dims": [10, 8, 3.5], "ism_max_order_used": 40, "sabine_max_order": 85, "seconds": 0.20, "measured_rt60": 1.07},
+  {"target_rt60": 0.8, "dims": [10, 8, 3.5], "hybrid_raytracing": true, "seconds": 0.49, "measured_rt60": 1.06},
+  {"target_rt60": 1.2, "dims": [15, 12, 4], "ism_max_order_used": 40, "sabine_max_order": 108, "seconds": 0.18, "measured_rt60": 1.71},
+  {"target_rt60": 1.2, "dims": [15, 12, 4], "hybrid_raytracing": true, "seconds": 0.91, "measured_rt60": 1.91}
+ ],
+ "notes": "Machine shared with other jobs; load average varied between about 5 and 80 during the day."
+}

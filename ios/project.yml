@@ -1,0 +1,80 @@
+name: Earshot
+options:
+  deploymentTarget: { iOS: "26.0" }
+  createIntermediateGroups: true
+settings:
+  base:
+    DEVELOPMENT_TEAM: ${EARSHOT_TEAM}        # set by the Makefile from TEAM (ios/local.mk); empty = pick a team in Xcode
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.0"                    # Swift 5 language mode (contract 5)
+    SWIFT_DEFAULT_ACTOR_ISOLATION: nonisolated
+    TARGETED_DEVICE_FAMILY: "1"
+    GCC_C_LANGUAGE_STANDARD: c11
+    GCC_OPTIMIZATION_LEVEL: "2"             # -O2 for C in Debug and Release, the engine must stay real time
+    GCC_FAST_MATH: NO                       # never -ffast-math (contract 4.1)
+    GCC_PREPROCESSOR_DEFINITIONS: ["$(inherited)", "ACCELERATE_NEW_LAPACK=1", "ES_HOP_SGEMV=1"]   # ACCELERATE_NEW_LAPACK as in the engine Makefile and make ios-check
+    # ES_HOP_SGEMV=1 (lead integration, 2026-11-08): the hop's 16-row products use the E-1 reference path
+    # (one cblas_sgemv per row, engine/src/nn.c es_linear_acc_xt) instead of E-3's transposed cblas_sgemm.
+    # On the iOS 26.0 simulator runtime that cblas_sgemm mallocs and frees a 69,728-byte buffer in every
+    # call with 512 output columns (the time-LSTM products, 8 per hop), which breaks contract 4.1; the
+    # sgemv path measured 0 allocations per hop with the debug malloc hook. Remove this define only when
+    # an allocation-free sgemm path is measured with the debug malloc counter on the iPhone (DECISIONS L
+    # 2026-11-07 "Hop Linears": E-3 may replace es_linear_rt only with a path that measures 0 allocations).
+    HEADER_SEARCH_PATHS: ["$(SRCROOT)/../engine/include", "$(SRCROOT)/Earshot/Audio"]
+    SWIFT_OBJC_BRIDGING_HEADER: Earshot/App/Earshot-Bridging-Header.h
+    COREML_CODEGEN_LANGUAGE: None           # we load the compiled model by URL, no generated class
+targets:
+  Earshot:
+    type: application
+    platform: iOS
+    sources:
+      - path: Earshot
+        # I-2: `make models` copies all of ml/exports/<run>/ into Resources/Models; the app bundles only
+        # the 5 files of 30-ios 1 (quality_vectors.json goes to the test bundle, testvec_long.est to nobody)
+        excludes: ["Resources/Models/quality_vectors.json", "Resources/Models/testvec_long.est"]
+      - path: ${EARSHOT_ENGINE_SRC}         # set by the Makefile: ../engine/src (real, the default) or Stubs (stub)
+        # Lead integration: the warning flags of `make ios-check` (engine/Makefile BASE_CFLAGS), so the app
+        # compiles the engine exactly as ios-check does; -O2, -std=c11, no fast-math and
+        # ACCELERATE_NEW_LAPACK=1 come from the settings above (20-engine 2.3, 30-ios 2.1)
+        compilerFlags: ["-Wall", "-Wextra", "-Wshadow", "-Wstrict-prototypes", "-Werror"]
+      - path: ../engine/include
+        buildPhase: none
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aarushkandukoori.earshot
+        MARKETING_VERSION: "0.1"
+        CURRENT_PROJECT_VERSION: "1"
+      configs:
+        # I-1: the debug malloc counter (Audio/MallocHook.c, contract 11 Lead integration) exists only in
+        # Debug; Release compiles it out ($(inherited) keeps ACCELERATE_NEW_LAPACK=1). Swift asks
+        # mh_compiled_in() at run time, so no Swift condition is needed.
+        Debug:
+          GCC_PREPROCESSOR_DEFINITIONS: ["$(inherited)", "EARSHOT_MALLOC_HOOK=1"]
+    info:
+      path: Earshot/App/Info.plist
+      properties:
+        CFBundleDisplayName: Earshot
+        CFBundleShortVersionString: $(MARKETING_VERSION)     # fixer addition: without it XcodeGen writes 1.0
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)           # so app_version reads "0.1 (1)" (30-ios 15.3)
+        NSMicrophoneUsageDescription: "Earshot listens through the iPhone microphone to bring the person you choose forward. Audio never leaves this iPhone."
+        NSMotionUsageDescription: "Earshot uses AirPods head tracking so you can switch to the person you are facing."
+        UIBackgroundModes: [audio]
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        "UISupportedInterfaceOrientations~ipad": [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]   # I-0 addition: silences the all-orientations warning; the app is iPhone only
+    scheme:
+      testTargets: [EarshotTests]
+  EarshotTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: EarshotTests
+      # I-2: ClipToolsTests reads WP-ML's quality_vectors.json from the test bundle (30-ios 15.1);
+      # optional, so the project still generates before `make models` (the test then fails with a hint)
+      - path: Earshot/Resources/Models/quality_vectors.json
+        buildPhase: resources
+        optional: true
+    dependencies: [{ target: Earshot }]
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES        # I-0 addition: the test bundle needs an Info.plist to build

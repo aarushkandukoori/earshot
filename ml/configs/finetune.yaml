@@ -1,0 +1,10 @@
+# Optional fine-tune (contract 8.4, 10-ml 10.6): starts from the best main checkpoint's EMA weights with a fresh
+# optimizer. 10% phone-rig rows only if data/rig/manifest.jsonl exists (10-ml 8.10; not implemented yet, so the
+# loader refuses to start while that file exists).
+base: main.yaml
+run: finetune
+init: ml/runs/main/best_1.pt
+steps: 10000
+lr: {peak: 1.0e-4, final: 1.0e-5, warmup: 500, decay_end: 10000}
+stages:
+  - {start: 0, recipe: FT, batch: 4, segment_s: 8.0, oversup: true}

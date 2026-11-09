@@ -1,0 +1,7 @@
+# Smoke extension (lead, 2026-11-08, DECISIONS L): the 1,500-step smoke reached a median SI-SNRi of 17.75 dB and was
+# still rising about 0.5 dB per 100 steps, so it failed the 20 dB gate on time, not on learning. This continues the
+# same run (`--resume last` from ml/runs/smoke/step_1500.pt) up to 3,000 steps with the same constant LR. PASS (exit 0)
+# as soon as the median reaches 20 dB at a 100-step check; FAIL (exit 2) at 3,000.
+base: smoke.yaml
+steps: 3000
+lr: {peak: 5.0e-4, final: 5.0e-4, warmup: 100, decay_end: 3000}

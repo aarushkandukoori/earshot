@@ -1,0 +1,27 @@
+{
+ "date": "2026-11-06",
+ "method": "Hugging Face tree API sizes (hfsize.py), remote parquet column reads (shardstats.py, fsd_stats.py), HTTP HEAD and remote zip central-directory reads (remote_zip_ls.py). No audio was downloaded except where noted.",
+ "speakers_per_shard": {
+  "GLOBE_V2 train-00000 (453 MB)": {"rows": 3253, "speakers": 152, "hours": 3.17, "top_accents": {"United States English": 2146, "Australian English": 655, "Canadian English": 179, "England English": 177}},
+  "GLOBE_V2 train-00100": {"rows": 3253, "speakers": 197, "hours": 2.91, "top_accents": {"United States English": 2563, "England English": 405, "Australian English": 158}},
+  "parler-tts/mls_eng train-00000 (497 MB)": {"rows": 7633, "speakers": 11, "hours": 31.58},
+  "parler-tts/mls_eng train-00700": {"rows": 7633, "speakers": 9, "hours": 31.55},
+  "openslr/librispeech_asr train.clean.360 0000 (484 MB)": {"rows": 2167, "speakers": 20},
+  "mythicinfinity/libritts_r train.clean.360 00000 (530 MB)": {"rows": 1878, "speakers": 10},
+  "facebook/voxpopuli en train-00000 (3.23 GB)": {"rows": 6083, "speakers": 473},
+  "facebook/voxpopuli en train-00015": {"rows": 6083, "speakers": 459},
+  "facebook/voxpopuli en_accented test-00000 (2.47 GB)": {"rows": 4194, "speakers": 313, "accents": 15},
+  "edinburghcstr/edacc test-00000": {"rows": 929, "speakers": 16, "accents": 10}
+ },
+ "hf_total_sizes_GB": {"MushanW/GLOBE_V2": 76.07, "MushanW/GLOBE_V3": 348.74, "parler-tts/mls_eng": 705.18, "mythicinfinity/libritts_r": 100.55, "openslr/librispeech_asr": 123.68, "edinburghcstr/edacc": 6.95, "edinburghcstr/ami ihm": 15.24, "facebook/voxpopuli en": 98.80, "amphion/Emilia-Dataset Emilia-YODAS/EN (1362 tars)": 1489.02, "amphion/Emilia-Dataset Emilia/EN (1140 tars)": 1156.14, "quinnlue/FSD50K-16k": 6.88},
+ "http_sizes_bytes": {"VCTK-Corpus-0.92.zip": 11747302977, "wham_noise.zip": 18194930748, "musan.tar.gz": 11086114085, "libritts_r train_clean_360.tar.gz": 28953983271, "rirs_noises.zip": 1311166223, "MIT IR Audio.zip": 11660005, "ACE_Corpus_RIRN_Mobile.tbz2": 1586765510, "lombardgrid_audio.zip": 652614041, "DEMAND PRESTO_16k.zip": 111292815},
+ "range_requests_supported": ["VCTK (DSpace API)", "wham_noise.zip (S3)", "openslr.org", "mcdermottlab.mit.edu"],
+ "remote_zip_listings": {
+  "rirs_noises.zip": {"uncompressed_GB": 3.78, "real_rirs_isotropic_noises": {"files": 419, "GB": 0.844, "format": "16 kHz, PCM_16, some 2-channel"}, "pointsource_noises": {"files": 846, "GB": 0.681}, "simulated_rirs": {"small": 0.323, "medium": 0.643, "large": 1.283, "files_each": 20202}},
+  "wham_noise.zip": {"uncompressed_GB": 37.65, "tr": {"files": 20000, "GB": 26.743}, "cv": {"files": 5000, "GB": 6.752}, "tt": {"files": 3000, "GB": 4.150}, "format": "16 kHz, 2 channels, float32"},
+  "MIT IR Survey Audio.zip": {"wav": 270, "format": "32 kHz, PCM_24, mono, 0.2-0.5 s", "food_and_drink_venues": "about 30 (14 Bar, 4 Restaurant, 2 CoffeeShop, 2 FastFoodRestaurant, 2 Pizzeria, WineBar, Cafeteria, MallFoodCourt, dining halls)"},
+  "VCTK-Corpus-0.92.zip": {"members": 133135, "uncompressed_GB": 11.73, "mic1_flac_files": 44455, "mic1_compressed_GB": 6.26, "speakers": 110, "layout": "wav48_silence_trimmed/pXXX/pXXX_NNN_mic1.flac", "accents": {"English": 33, "American": 22, "Scottish": 19, "Irish": 9, "Canadian": 8, "NorthernIrish": 6, "SouthAfrican": 4, "Indian": 3, "Australian": 2, "Welsh": 1, "NewZealand": 1, "British": 1, "Unknown": 1}}
+ },
+ "ears_github_release_assets": {"count": 108, "total_GB": 70.55, "avg_MB": 653.2},
+ "fsd50k_license_hours_from_mirror_metadata": {"total": 108.59, "CC0": 42.38, "CC-BY": 47.62, "CC-BY-NC": 14.93, "Sampling+": 3.67}
+}

@@ -1,0 +1,67 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Data and training outputs (large, regenerable)
+data/
+runs/
+ml/runs/
+ml/cache/
+ml/exports/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.old
+*.npz
+*.npy
+!ml/assets/decim16k_fir.npy
+*.parquet
+*.zip
+*.tar
+*.tar.gz
+
+# Audio (datasets, recordings, listening samples)
+*.wav
+*.flac
+*.opus
+*.mp3
+*.m4a
+*.caf
+*.aif
+*.aiff
+!tests/fixtures/**/*.wav
+
+# Model files (built by the ML export, copied into the app by `make models`)
+*.esw
+*.est
+*.mlpackage/
+*.mlmodelc/
+*.onnx
+*.safetensors
+
+# Raw measurement files pulled off the phone (`make phase0`). They can hold Bluetooth port ids,
+# so only hand-written summaries in docs/measurements/*.md are committed.
+docs/measurements/*
+!docs/measurements/*.md
+
+# Xcode / build
+build/
+engine/build/
+DerivedData/
+*.dSYM/
+*.xcuserstate
+xcuserdata/
+
+# Personal signing and device settings (ios/local.mk, see ios/Makefile)
+ios/local.mk
+ios/.device
+*.local.xcconfig
+
+# macOS
+.DS_Store
+
+# Downloaded model weights (large, re-fetchable; WeSpeaker = VoxCeleb research terms)
+models/

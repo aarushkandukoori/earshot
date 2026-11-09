@@ -1,0 +1,6 @@
+torch 2.7.1 load (4.6640625, 5.03515625, 9.3330078125)
+mps LSTM 2x256 B8 T500 fwd+bwd median 55 ms
+mps GRU 2x256 B8 T500 fwd+bwd median 623 ms
+cpu LSTM 2x256 B8 T500 fwd+bwd median 125 ms
+cpu GRU 2x256 B8 T500 fwd+bwd median 110 ms
+load after (5.109375, 5.1162109375, 9.3115234375)

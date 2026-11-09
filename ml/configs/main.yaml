@@ -1,0 +1,25 @@
+# ml/configs/main.yaml - main run (10-ml 10.6, contract 8.4), 120,000 steps, about 38.5 h of compute.
+# The first hour of this run measured 1.101 s/step (events.log 2026-11-08 20:52, 3,232 steps, data loading included)
+# x 1.05 for validation and checkpoints = 1.156 s -> 120,000 steps = 38.5 h (wall time is longer while the guard
+# yields to other builds). The contract 8.4 rule was not triggered, so this is the original plan. The 108,000-step
+# plan was a premature cut from a loaded-Mac A/B number, 1.262 s/step (DECISIONS L 2026-11-08).
+# Started by `ml/tools/run_forever.sh ml/configs/main.yaml`, which resumes the pilot (pilot.yaml stops this same run
+# at step 6,000). Contract 8.4 rule - if the first hour averages above 1.25 s/step, events.log warns and the lead cuts
+# stage B here (edit `stages` to the total main_steps_for_40h gives); the model is never shrunk.
+run: main
+seed: 1                      # data seed - example i of batch j uses default_rng([seed, 8 j + i])
+steps: 120000
+stop_at: null
+lr: {peak: 5.0e-4, final: 2.5e-5, warmup: 2000, decay_end: 120000}
+optim: {betas: [0.9, 0.999], weight_decay: 1.0e-4, clip: 5.0}
+ema: {decay: 0.999, start: 2000}
+val_every: 2000              # validation on the 400 fixed mixtures (ml/cache/val_v1.npz)
+ckpt_every: 1000
+keep_last: 3
+keep_best: 2
+workers: 6
+allow_missing_decim: false
+stages:
+  - {start: 0,      recipe: A, batch: 8, segment_s: 4.0, oversup: false}
+  - {start: 20000,  recipe: B, batch: 8, segment_s: 4.0, oversup: true}    # 20,000-105,000 (85,000 steps)
+  - {start: 105000, recipe: C, batch: 4, segment_s: 8.0, oversup: true}    # 105,000-120,000 (15,000 steps)

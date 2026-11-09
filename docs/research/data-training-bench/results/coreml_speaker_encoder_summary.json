@@ -1,0 +1,16 @@
+{
+ "date": "2026-11-06",
+ "env": "scratch venv: torch 2.7.1, coremltools 9.0, onnxruntime 1.31.1; predictions on this M4 Mac (not the iPhone)",
+ "model": "WeSpeaker ResNet34 (voxceleb, TSTP, emb 256, 6.63 M params) + Kaldi fbank written as one Conv1d with a folded DC-removal / pre-emphasis / Hamming / DFT kernel, mel matmul, log, CMN",
+ "fbank_max_abs_err_vs_torchaudio_kaldi_fbank": 8.1e-05,
+ "pytorch_reimplementation_vs_official_onnx_min_cos": 1.0,
+ "coreml_fp32_saved_model_per_compute_unit_cos_vs_pytorch_10_clips": {"CPU_ONLY": 1.0, "CPU_AND_GPU": 1.0, "ALL": 0.9995},
+ "coreml_fp32_in_memory_reconvert_cos": {"flexible_shape_RangeDim": 0.9999, "fixed_5s_shape": 1.0},
+ "coreml_fp32_first_run_anomaly": "the very first in-memory run right after conversion gave min cos 0.588 over 10 clips (ALL compute units); not reproduced in three later runs",
+ "coreml_fp16_everything": "broken: cos 0.01-0.06, power spectrum of int16-scaled audio overflows float16",
+ "coreml_fp16_with_rescaled_front_end_and_clamp_1e-4": "min cos 0.74 vs exact features (the clamp changes quiet bins); not usable without retraining",
+ "coreml_mixed_fp32_front_fp16_trunk_20_clips": {"CPU_ONLY": {"min_cos": 1.0, "median_ms_per_5s": 9.2}, "CPU_AND_GPU": {"min_cos": 1.0, "median_ms_per_5s": 7.7}, "ALL": {"min_cos": 0.5731, "median_ms_per_5s": 2.9}, "CPU_AND_NE": {"min_cos": 0.5731, "median_ms_per_5s": 2.6}},
+ "coreml_fp32_mac_predict_median_ms_per_5s": 18.4,
+ "mlpackage_sizes_MB": {"fp32": 26, "fp16": 13, "mixed": 16},
+ "speechbrain_ecapa_stock_torch_stft_fbank": {"converted": true, "fixed_5s_shape": true, "cos_vs_pytorch": 1.0, "params_M": 20.77}
+}

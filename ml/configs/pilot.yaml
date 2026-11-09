@@ -1,0 +1,8 @@
+# Pilot (10-ml 10.5 and 10.6): the first 6,000 steps of the main run, in the same folder ml/runs/main/.
+# Gate (DECISIONS L 2026-11-08) - the val SI-SNRi median at 6k is above both 4k and 2k (still rising at the end of the
+# pilot) and no NaN skips. No absolute dB target. The step time is reported, never checked: gate_pilot.json gives the
+# median over steps 500-6,000 and main_steps_for_40h. It stops at 6,000 with a checkpoint; run_forever.sh with
+# main.yaml then resumes it.
+base: main.yaml
+stop_at: 6000
+gate: pilot

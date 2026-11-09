@@ -1,0 +1,13 @@
+{"meta": {"pyroomacoustics": "0.10.1", "scipy": "1.18.1", "loadavg": [3.4130859375, 20.30224609375, 33.12158203125]}}
+{"rt60_s": 0.3, "max_order_cap": null, "mean_max_order": 35.0, "rir_ms_each": 6.7, "rir_len_s": 0.918, "loadavg_1m": 3.41}
+{"rt60_s": 0.3, "max_order_cap": 12, "mean_max_order": 12.0, "rir_ms_each": 0.7, "rir_len_s": 0.262, "loadavg_1m": 3.41}
+{"rt60_s": 0.6, "max_order_cap": null, "mean_max_order": 76.8, "rir_ms_each": 67.2, "rir_len_s": 1.781, "loadavg_1m": 3.41}
+{"rt60_s": 0.6, "max_order_cap": 12, "mean_max_order": 12.0, "rir_ms_each": 0.8, "rir_len_s": 0.285, "loadavg_1m": 3.41}
+{"rt60_s": 0.9, "max_order_cap": null, "mean_max_order": 112.9, "rir_ms_each": 210.5, "rir_len_s": 2.474, "loadavg_1m": 3.46}
+{"rt60_s": 0.9, "max_order_cap": 12, "mean_max_order": 12.0, "rir_ms_each": 0.8, "rir_len_s": 0.277, "loadavg_1m": 3.46}
+{"convolve": "fftconvolve", "signal_s": 4, "rir_s": 0.25, "ms_each": 0.361}
+{"convolve": "oaconvolve", "signal_s": 4, "rir_s": 0.25, "ms_each": 0.865}
+{"convolve": "fftconvolve", "signal_s": 4, "rir_s": 0.5, "ms_each": 0.378}
+{"convolve": "oaconvolve", "signal_s": 4, "rir_s": 0.5, "ms_each": 0.374}
+{"convolve": "fftconvolve", "signal_s": 4, "rir_s": 1.0, "ms_each": 0.419}
+{"convolve": "oaconvolve", "signal_s": 4, "rir_s": 1.0, "ms_each": 0.422}

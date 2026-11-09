@@ -1,0 +1,8 @@
+start load { 5.40 16.22 10.71 }
+{"median_s": 0.976, "min_s": 0.94, "max_s": 1.084, "mps_pool_gb": 10.15, "params_M": 1.966, "name": "replica_product_esb16", "load_start": 5.21, "torch": "2.7.1"}
+{"median_s": 1.086, "min_s": 1.032, "max_s": 1.129, "mps_pool_gb": 9.83, "params_M": 2.574, "name": "merged_full", "load_start": 4.71, "torch": "2.7.1"}
+{"median_s": 0.947, "min_s": 0.937, "max_s": 0.983, "mps_pool_gb": 10.44, "params_M": 2.574, "name": "merged_no_wes", "load_start": 4.81, "torch": "2.7.1"}
+{"median_s": 1.03, "min_s": 1.014, "max_s": 1.071, "mps_pool_gb": 10.49, "params_M": 2.574, "name": "merged_full_4x8s", "load_start": 3.83, "torch": "2.7.1"}
+{"median_s": 1.025, "min_s": 1.015, "max_s": 1.074, "mps_pool_gb": 9.63, "params_M": 2.574, "name": "merged_full", "load_start": 3.58, "torch": "2.7.1"}
+{"median_s": 0.93, "min_s": 0.911, "max_s": 0.947, "mps_pool_gb": 10.42, "params_M": 1.966, "name": "replica_product_esb16", "load_start": 3.09, "torch": "2.7.1"}
+end load { 2.70 12.58 9.86 }

@@ -1,0 +1,11 @@
+# ios/.gitignore (30-ios 1 file plan)
+# The Xcode project is generated from project.yml by `make project`, so it is never committed.
+Earshot.xcodeproj/
+# xcodebuild output (derived data, logs, test results)
+build/
+# The phone's UDID, saved once per machine with `echo <udid> > .device`
+.device
+# Model files copied in by `make models` from ml/exports (large, regenerable, WeSpeaker is personal use only)
+Earshot/Resources/Models/*
+# Personal signing team and phone id (TEAM, DEVICE), read by the Makefile if present
+local.mk

@@ -1,0 +1,17 @@
+# Smoke run (contract 8.4, 10-ml 10.5 and 10.6): can the model fit 16 fixed examples?
+# The 16 examples (SMOKE recipe, seed 1234, 4 s, Le 6 s) are rendered once; batches alternate between examples 0-7
+# and 8-15. Every 100 steps the median SI-SNRi on all 16 is checked: PASS (exit 0) as soon as it is >= 20 dB,
+# FAIL (exit 2) at step 1,500. `pytest ml/tests` must pass as well (run separately).
+base: main.yaml
+run: smoke
+seed: 1234
+steps: 1500
+lr: {peak: 5.0e-4, final: 5.0e-4, warmup: 100, decay_end: 1500}   # warm-up, then constant
+ema: null
+val_every: null              # the gate uses the 16 training examples, not the validation set
+fixed_examples: 16
+workers: 0                   # no data loader: the fixed examples are rendered once in the main process
+allow_missing_decim: true
+gate: smoke
+stages:
+  - {start: 0, recipe: SMOKE, batch: 8, segment_s: 4.0, oversup: false}

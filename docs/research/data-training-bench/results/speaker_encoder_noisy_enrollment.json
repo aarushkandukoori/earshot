@@ -1,0 +1,146 @@
+{
+ "n_enroll": 440,
+ "trials_per_cond": 1320,
+ "conditions": [
+  "clean_3s",
+  "clean_5s",
+  "snr10_3s",
+  "snr5_3s",
+  "snr0_3s",
+  "snr5_5s",
+  "talker_snr10_3s",
+  "rev_snr5_3s"
+ ],
+ "eer_pct": {
+  "wespeaker_resnet34": {
+   "clean_3s": 0.45,
+   "clean_5s": 0.45,
+   "snr10_3s": 2.05,
+   "snr5_3s": 4.32,
+   "snr0_3s": 8.41,
+   "snr5_5s": 2.44,
+   "talker_snr10_3s": 5.23,
+   "rev_snr5_3s": 8.18
+  },
+  "wespeaker_resnet34_LM": {
+   "clean_3s": 0.68,
+   "clean_5s": 0.45,
+   "snr10_3s": 2.27,
+   "snr5_3s": 4.32,
+   "snr0_3s": 10.23,
+   "snr5_5s": 2.05,
+   "talker_snr10_3s": 5.91,
+   "rev_snr5_3s": 9.49
+  },
+  "wespeaker_campplus": {
+   "clean_3s": 0.68,
+   "clean_5s": 0.68,
+   "snr10_3s": 2.27,
+   "snr5_3s": 4.55,
+   "snr0_3s": 11.36,
+   "snr5_5s": 2.95,
+   "talker_snr10_3s": 4.77,
+   "rev_snr5_3s": 9.32
+  },
+  "wespeaker_ecapa512": {
+   "clean_3s": 1.14,
+   "clean_5s": 0.68,
+   "snr10_3s": 2.5,
+   "snr5_3s": 4.72,
+   "snr0_3s": 12.27,
+   "snr5_5s": 2.73,
+   "talker_snr10_3s": 6.36,
+   "rev_snr5_3s": 7.27
+  },
+  "speechbrain_ecapa1024": {
+   "clean_3s": 1.76,
+   "clean_5s": 0.91,
+   "snr10_3s": 3.18,
+   "snr5_3s": 5.45,
+   "snr0_3s": 13.41,
+   "snr5_5s": 3.64,
+   "talker_snr10_3s": 9.32,
+   "rev_snr5_3s": 10.17
+  },
+  "resemblyzer_ge2e": {
+   "clean_3s": 3.86,
+   "clean_5s": 3.41,
+   "snr10_3s": 10.0,
+   "snr5_3s": 16.42,
+   "snr0_3s": 27.73,
+   "snr5_5s": 15.68,
+   "talker_snr10_3s": 18.41,
+   "rev_snr5_3s": 23.86
+  }
+ },
+ "cos_to_clean": {
+  "wespeaker_resnet34": {
+   "clean_3s": 1.0,
+   "clean_5s": 1.0,
+   "snr10_3s": 0.806,
+   "snr5_3s": 0.684,
+   "snr0_3s": 0.493,
+   "snr5_5s": 0.731,
+   "talker_snr10_3s": 0.652,
+   "rev_snr5_3s": 0.528
+  },
+  "wespeaker_resnet34_LM": {
+   "clean_3s": 1.0,
+   "clean_5s": 1.0,
+   "snr10_3s": 0.807,
+   "snr5_3s": 0.682,
+   "snr0_3s": 0.483,
+   "snr5_5s": 0.737,
+   "talker_snr10_3s": 0.643,
+   "rev_snr5_3s": 0.522
+  },
+  "wespeaker_campplus": {
+   "clean_3s": 1.0,
+   "clean_5s": 1.0,
+   "snr10_3s": 0.819,
+   "snr5_3s": 0.704,
+   "snr0_3s": 0.506,
+   "snr5_5s": 0.75,
+   "talker_snr10_3s": 0.686,
+   "rev_snr5_3s": 0.551
+  },
+  "wespeaker_ecapa512": {
+   "clean_3s": 1.0,
+   "clean_5s": 1.0,
+   "snr10_3s": 0.804,
+   "snr5_3s": 0.688,
+   "snr0_3s": 0.491,
+   "snr5_5s": 0.735,
+   "talker_snr10_3s": 0.656,
+   "rev_snr5_3s": 0.537
+  },
+  "speechbrain_ecapa1024": {
+   "clean_3s": 1.0,
+   "clean_5s": 1.0,
+   "snr10_3s": 0.768,
+   "snr5_3s": 0.631,
+   "snr0_3s": 0.41,
+   "snr5_5s": 0.686,
+   "talker_snr10_3s": 0.573,
+   "rev_snr5_3s": 0.495
+  },
+  "resemblyzer_ge2e": {
+   "clean_3s": 1.0,
+   "clean_5s": 1.0,
+   "snr10_3s": 0.756,
+   "snr5_3s": 0.681,
+   "snr0_3s": 0.596,
+   "snr5_5s": 0.677,
+   "talker_snr10_3s": 0.682,
+   "rev_snr5_3s": 0.617
+  }
+ },
+ "ms_per_5s_embed": {
+  "wespeaker_resnet34": 40.0,
+  "wespeaker_resnet34_LM": 59.9,
+  "wespeaker_campplus": 17.6,
+  "wespeaker_ecapa512": 12.3,
+  "speechbrain_ecapa1024": 34.9,
+  "resemblyzer_ge2e": 867.5
+ }
+}
